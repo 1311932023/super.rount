@@ -10,7 +10,7 @@ namespace ashan
 		template<class _Type>
 		void* create(_Type& _obj);	
 		template<class _Type>
-		void destory(_Type& _obj, char* _ptr);		
+		void destroy(_Type& _obj, char* _ptr);		
 		template<class _Type>
 		void clear(_Type& _obj);		
 	}
@@ -29,10 +29,10 @@ namespace ashan
 				return __inner::create(m_data);
 			return malloc(s);
 		}
-		void destory(size_t s, void* ptr)
+		void destroy(size_t s, void* ptr)
 		{
 			if (s <= _Size)
-				return __inner::destory(m_data, (char*)ptr);			
+				return __inner::destroy(m_data, (char*)ptr);
 			free(ptr);
 		}
 	};
@@ -48,11 +48,11 @@ namespace ashan
 				return __inner::create(m_data);
 			return Mempool<_Res...>::create(s);
 		}
-		void destory(size_t s, void* ptr)
+		void destroy(size_t s, void* ptr)
 		{
 			if (s <= _Size)
-				return __inner::destory(m_data, (char*)ptr);
-			return Mempool<_Res...>::destory(s, ptr);
+				return __inner::destroy(m_data, (char*)ptr);
+			return Mempool<_Res...>::destroy(s, ptr);
 		}
 	};	
 	namespace __inner
@@ -67,7 +67,7 @@ namespace ashan
 			return p->m_data.data();
 		}
 		template<class _Type>
-		void destory(_Type& _obj, char* _ptr)
+		void destroy(_Type& _obj, char* _ptr)
 		{
 			const auto _shift = ((size_t)&(((decltype(_obj.front()))0)->m_data));
 			_obj.push_back(decltype(_obj.front())(_ptr - _shift));
