@@ -1,6 +1,6 @@
 /*
  *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
- *	
+ *	All rights reserved.
  *	初始化时在栈上分配内存，超过初始化的内存后动态生成的内存
  *
  */

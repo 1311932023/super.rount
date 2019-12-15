@@ -1,6 +1,6 @@
 /*
  *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
- *	
+ *	All rights reserved.
  *	线程间消息列表，可依次执行push_back的Vtask消息
  *
  */

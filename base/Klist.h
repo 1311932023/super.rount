@@ -1,6 +1,6 @@
 /*
  *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
- *	
+ *	All rights reserved.
  *	仿linux内核的双向链表
  *
  */

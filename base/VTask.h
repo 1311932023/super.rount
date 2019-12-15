@@ -1,6 +1,6 @@
 /*
  *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
- *	
+ *	All rights reserved.
  *	用于message list 执行的对象 纯虚父类
  *
  */
