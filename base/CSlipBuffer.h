@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	
+ *	基于CSafeBuffer 的滑动buffer
+ *
+ */
 #ifndef __CSLIPBUFFER_H__
 #define __CSLIPBUFFER_H__
 #include "CSafeBuffer.h"

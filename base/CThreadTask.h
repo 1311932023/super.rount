@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	
+ *	线程间消息列表，可依次执行push_back的Vtask消息
+ *
+ */
 #ifndef __CTHREADTASK_H__
 #define __CTHREADTASK_H__
 #include <thread>

@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	
+ *	共享内存
+ *
+ */
 #ifndef __KMEMORY_H__
 #define __KMEMORY_H__
 

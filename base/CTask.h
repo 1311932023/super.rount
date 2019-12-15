@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	
+ *	message list 线程间消息列表，可依次执行push_back的Vtask消息
+ *
+ */
 #ifndef __CTASK_H_2019_12_08__
 #define __CTASK_H_2019_12_08__
 #include <unistd.h>

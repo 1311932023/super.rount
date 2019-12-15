@@ -1,3 +1,10 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	
+ *	初始化时在栈上分配内存，超过初始化的内存后动态生成的内存
+ *
+ */
+
 #ifndef __CSAFEBUFFER_H__
 #define __CSAFEBUFFER_H__
 #include <string.h>
@@ -43,7 +50,6 @@ public:
 	}
 	void pop_front(size_t size)
 	{		
-		assert(size <= m_size);
 		if (size == m_size)
 		{				
 			m_size = 0;
@@ -83,20 +89,21 @@ public:
 	}	
 	void reserve(size_t _max)
 	{
-		assert(m_max < _max);
 		_Type* tmp_buffer = m_buffer;
 		m_max = _max;
 		m_buffer = (_Type*)malloc(sizeof(_Type) * m_max);
 		if (m_buffer == NULL)
 		{
-			throw("malloc errro");
+			throw("malloc error");
 		}
 		if (m_size != 0)
 		{
 			memcpy(m_buffer, tmp_buffer, sizeof(_Type) * m_size);
 		}
 		if (tmp_buffer != m_fix_buffer)
+		{
 			free(tmp_buffer);
+		}
 	}
 	void resize(size_t _size)
 	{
