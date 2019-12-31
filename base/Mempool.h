@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	All rights reserved.
+ *	memory pool
+ *
+ */
 #ifndef __MEMPOOL_H__
 #define __MEMPOOL_H__
 #include <array>

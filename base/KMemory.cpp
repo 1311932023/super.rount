@@ -1,3 +1,9 @@
+/*
+ *	Copyright (c) 2019-2020 Zhao YunShan(93850592@qq.com)
+ *	All rights reserved.
+ *	共享内存
+ *
+ */
 #include <unistd.h>
 #include <assert.h>
 #include <sys/types.h>
