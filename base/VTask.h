@@ -24,15 +24,15 @@ public:
 class VTaskEx
 {
 protected:
-	enum E_TASK_STATUE	{ e_running, e_terminating, e_terminated,};		
+	enum E_TASK_STATUS	{ e_running, e_terminating, e_terminated,};		
 	std::list<VTask*> m_list;
 	std::mutex m_mutex;
-	std::atomic_int m_statue = e_running;
+	std::atomic_int m_status = e_running;
 public:
 	virtual ~VTaskEx() 
 	{
 		stop();
-		while (m_statue != e_terminated)
+		while (m_status != e_terminated)
 			usleep(1000);
 	}
 	virtual void notify_task() = 0;
@@ -58,12 +58,12 @@ public:
 			}
 			for (auto it : _list)
 				(*it)();
-		} while (m_state == e_running);
-		m_state = e_terminated;
+		} while (m_status == e_running);
+		m_status = e_terminated;
 	}
 	void stop_task()
 	{
-		m_statue = e_terminating;
+		m_status = e_terminating;
 		notify_task();
 	}
 };
