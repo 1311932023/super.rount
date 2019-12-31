@@ -36,30 +36,29 @@ public:
 			usleep(1000);
 	}
 	virtual void notify_task() = 0;
-	virtual void wait_task() = 0;	
+	virtual void wait_task(std::unique_lock<std::m_mutex>&) = 0;	
 public:
 	void push_task(VTask* _task) 
 	{
 		{
-			std::lock_guard<decltype(m_mutex)> _lock(m_mutex);
+			std::unique_lock<decltype(m_mutex)> _lock(m_mutex);
 			m_list.push_back(_task);
 		}
 		notify_task();
 	}
 	void run_task()
-	{		
-		do
-		{
-			decltype(m_list) _list;
+	{
+		do {
+			decltype(m_list) _list; 
 			{
-				std::lock_guard<decltype(m_mutex)> _lock(m_mutex);
+				std::unique_lock<decltype(m_mutex)> _lock(m_mutex);
 				if (m_list.empty())
-					wait_task();
+					wait_task(_lock);
 				_list.swap(m_list);
 			}
-			for (auto it : _list)			
-				(*it)();			
-		}while(m_state == e_running);
+			for (auto it : _list)
+				(*it)();
+		} while (m_state == e_running);
 		m_state = e_terminated;
 	}
 	void stop_task()

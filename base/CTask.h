@@ -7,28 +7,21 @@
 #ifndef __CTASK_H_2019_12_08__
 #define __CTASK_H_2019_12_08__
 #include <unistd.h>
-#include <atomic>
-#include <list>
-#include <mutex>
 #include <condition_variable>
 #include "VTask.h"
 
-class CTask
+class CTask : public VTaskEx
 {
-	enum state
-	{
-		e_running,
-		e_stop,
-		e_terminal,
-	};
-	std::list<VTask*> m_list;
-	std::atomic_int m_state;
-	std::mutex m_mutex;
 	std::condition_variable m_cond;
 public:
-	virtual ~CTask();
-	void push_task(VTask* cmd);
-	void stop();
-	void run();
+	void wait_task(std::unique_lock<std:mutex>& _lock)
+	{
+		m_cond.wait(_lock);
+	}
+	void notify_task()
+	{
+		m_cond.notify_one();
+	}
+	
 };
 #endif
